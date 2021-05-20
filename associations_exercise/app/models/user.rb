@@ -14,10 +14,12 @@ class User < ApplicationRecord
         foreign_key: :student_id,
         class_name: :Enrollment
     
-    has_many :enrolled_courses, through: :enrollments
+    has_many :enrolled_courses, 
+        through: :enrollments,
         primary_key: :id,
         foreign_key: :course_id,
-        source: :enrollments
+        source: :course
+        #source should be a method, not a class
 
 
 
@@ -29,4 +31,4 @@ end
 
 #thru and source:
     #doesn't create anything new, always something you already have (or else you forgot to make it)
-    #
+ 
